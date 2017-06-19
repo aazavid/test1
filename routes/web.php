@@ -12,8 +12,8 @@ Route::get('/extraction', ['as' => 'find', function () {
 Route::post('/extraction', 'ExtractController@search');
 
 
-Route::get('/extraction/{id}', ['as' => 'register', function ($id) {
-    return view('registerForm',['id_nomber' => $id]);
-}]);
+Route::get('/extraction/{id}', 'ExtractController@showRegister')->name('register');
 
-Route::post('/extraction/{id}', 'ExtractController@register')->name('PostRegister');
+
+
+Route::post('/extraction/{id}', 'ExtractController@registerPost')->name('PostRegister');

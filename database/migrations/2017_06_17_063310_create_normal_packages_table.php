@@ -15,7 +15,12 @@ class CreateNormalPackagesTable extends Migration
     {
         Schema::create('normal_packages', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('nomberOrder');
+            $table->unsignedInteger('id_client');
+            $table->string('typePackages');
+            $table->string('nomber_partners');
             $table->timestamps();
+
         });
     }
 

@@ -13,9 +13,8 @@ class CreateBrakPackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('brak_packages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('brak_packages', function ($table) {
+            $table->string('email');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateBrakPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brak_packages');
+        Schema::table('brak_packages', function ($table) {
+            $table->dropColumn('email');
+        });
     }
 }
