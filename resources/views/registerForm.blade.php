@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form class="form-horizontal" method="post"  action="{{route('PostRegister',['id'=> $id_nomber])}}">
+    <form class="form-horizontal" method="post"  enctype="multipart/form-data" action="{{route('PostRegister',['id'=> $id_nomber])}}">
         <fieldset>
 
             <div class="form-group">
@@ -26,7 +26,7 @@
             <div class="form-group">
 
                 <label>Weight, Lbs</label>
-                <input id="textinput" name="id" type="text" placeholder="Weight" class="form-control input-md">
+                <input id="weight" name="weight" type="text" placeholder="Weight" class="form-control input-md">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             </div>
@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="filebutton">Add photos</label>
                 <div class="col-md-4">
-                    <input id="filebutton" name="filebutton" class="input-file" type="file">
+                    <input id="photo" name="photo" class="input-file" type="file">
                 </div>
             </div>
 
@@ -46,7 +46,15 @@
             </div>
 
             <div class="form-group">
-                <label>{{$error}}</label>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
             </div>
 
